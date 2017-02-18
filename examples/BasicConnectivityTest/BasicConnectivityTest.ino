@@ -28,12 +28,13 @@
 
 // connection pins
 const uint8_t PIN_RST = 9; // reset pin
+//const uint8_t PIN_RST =  0xff;  //soft reset?
 const uint8_t PIN_IRQ = 2; // irq pin
 const uint8_t PIN_SS = SS; // spi select pin
 
 void setup() {
   // DEBUG monitoring
-  Serial.begin(9600);
+  Serial.begin(115200);
   // initialize the driver
   DW1000.begin(PIN_IRQ, PIN_RST);
   DW1000.select(PIN_SS);
@@ -60,5 +61,5 @@ void loop() {
   DW1000.getPrintableDeviceMode(msg);
   Serial.print("Device mode: "); Serial.println(msg);
   // wait a bit
-  delay(10000);
+  delay(5000);
 }
